@@ -1,0 +1,82 @@
+<%= turbo_stream_from "products" %>
+<%= turbo_refreshes_with method: :morph, scroll: :preserve %>
+<div class="w-full">
+  <% if notice.present? %>
+    <p id="notice"
+       class="mb-5 inline-block rounded-lg bg-green-50 px-3 py-2 font-medium text-green-700">
+      <%= notice %>
+    </p>
+  <% end %>
+
+  <div class="flex items-center justify-between pb-8">
+    <h1 class="mx-auto text-4xl font-bold">Products listing</h1>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table id="products" class="mx-auto">
+      <tbody>
+        <% @products.each do |product| %>
+          <tr class="<%= cycle('bg-green-50', 'bg-white') %>">
+            <td class="px-2 py-3">
+              <% if product.image.attached? %>
+                <%= image_tag product.image,
+                              alt: product.title,
+                              class: "w-40 max-w-none" %>
+              <% end %>
+            </td>
+
+            <td class="px-3 py-3">
+              <h2 class="text-xl font-bold">
+                <%= product.title %>
+              </h2>
+
+              <p class="my-3">
+                <%= truncate(strip_tags(product.description), length: 80) %>
+              </p>
+
+              <p>
+                <%= number_to_currency(product.price) %>
+              </p>
+            </td>
+
+            <td class="px-3 py-3">
+              <ul class="space-y-2">
+                <li>
+                  <%= link_to "Show",
+                              product,
+                              class: "hover:underline" %>
+                </li>
+
+                <li>
+                  <%= link_to "Edit",
+                              edit_product_path(product),
+                              class: "hover:underline" %>
+                </li>
+
+                <li>
+                  <%= button_to "Destroy",
+                                product,
+                                method: :delete,
+                                class: "text-red-700 hover:underline",
+                                data: { turbo_confirm: "Are you sure?" } %>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="3">
+            <div class="mt-8">
+              <%= link_to "New product",
+                          new_product_path,
+                          class: "inline-block rounded-lg bg-green-600 px-5 py-3 font-medium text-white hover:bg-green-700" %>
+            </div>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

@@ -15,13 +15,22 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create product" do
-    assert_difference("Product.count") do
-      post products_url, params: { product: { description: @product.description, price: @product.price, title: @product.title } }
-    end
+test "should create product" do
+  assert_difference("Product.count", 1) do
+    post products_url, params: {
+      product: {
+        title: "New Book",
+        description: @product.description,
+        price: @product.price,
+        image: fixture_file_upload("lorem.jpg", "image/jpeg")
+      }
+    }
 
-    assert_redirected_to product_url(Product.last)
+    assert_response :redirect
   end
+
+  assert_redirected_to product_url(Product.last)
+end
 
   test "should show product" do
     get product_url(@product)

@@ -74,6 +74,7 @@ GEM
       uri (>= 0.13.1)
     addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
+    ansi (1.6.0)
     ast (2.4.3)
     base64 (0.3.0)
     bcrypt_pbkdf (1.1.2)
@@ -173,6 +174,11 @@ GEM
     minitest (6.0.6)
       drb (~> 2.0)
       prism (~> 1.5)
+    minitest-reporters (1.8.0)
+      ansi
+      builder
+      minitest (>= 5.0, < 7)
+      ruby-progressbar
     msgpack (1.8.5)
     net-imap (0.6.7)
       date
@@ -404,6 +410,7 @@ DEPENDENCIES
   jbuilder
   json (< 3)
   kamal
+  minitest-reporters
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.3)

@@ -1,11 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  description: MyText
+  title: Title4
+  description: MyText3
   price: 9.99
 
 two:
-  title: MyString
-  description: MyText
+  title: Title5
+  description: MyText2
   price: 9.99
+
+pragprog:
+  title: Pragmatic Programmers
+  description: A book about programming best practices.
+  price: 29.99

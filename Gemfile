@@ -60,9 +60,10 @@ group :development do
 end
 
 group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem "minitest-reporters"
+
+  # Use system testing
   gem "capybara"
   gem "selenium-webdriver"
 end
-
 gem "hotwire-spark", "~> 0.1.13", group: :development

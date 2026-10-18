@@ -125,6 +125,7 @@ GEM
       listen
       rails (>= 7.0.0)
       zeitwerk
+    htmlbeautifier (1.4.3)
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.2.3)
@@ -406,6 +407,7 @@ DEPENDENCIES
   capybara
   debug
   hotwire-spark (~> 0.1.13)
+  htmlbeautifier
   importmap-rails
   jbuilder
   json (< 3)
